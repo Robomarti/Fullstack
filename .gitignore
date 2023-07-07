@@ -23,4 +23,4 @@ yarn-error.log*
 
 part1
 part3things
-passwordtext.js
+.env

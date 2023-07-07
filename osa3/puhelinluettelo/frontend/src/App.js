@@ -31,7 +31,7 @@ const Person = ({parts, notif}) => {
           console.log("fail", error)
         })
     }
-    
+    window.location.reload()
   }
   
   return (
