@@ -93,7 +93,8 @@ const App = () => {
           }, 2000)
         })
         .catch(error => {
-          console.log("fail", error)
+          console.log(error.response.data)
+          setErrorMessage( `'${error.response.data}'`)
         })
     }
     else
