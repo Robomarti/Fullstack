@@ -1,0 +1,36 @@
+GET http://localhost:3003/api/blogs
+
+###
+
+GET http://localhost:3003/api/blogs/64a5a473d7238be7f1d23619
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "HTML is not easy",
+	"author": "String",
+	"url": "String",
+	"likes": "0",
+}
+
+###
+
+DELETE http://localhost:3003/api/blogs/770766276544
+
+###
+
+GET http://localhost:3003/api/users
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "mina",
+	"name": "mina",
+	"password": "moi"
+}
