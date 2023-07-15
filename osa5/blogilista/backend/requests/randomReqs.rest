@@ -2,7 +2,7 @@ GET http://localhost:3003/api/blogs
 
 ###
 
-GET http://localhost:3003/api/blogs/64a5a473d7238be7f1d23619
+GET http://localhost:3000/api/blogs/64a854f2b528c8ef800c8c13
 
 ###
 
@@ -19,7 +19,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pb
 
 ###
 
-DELETE http://localhost:3003/api/blogs/770766276544
+DELETE http://localhost:3003/api/blogs/64a854f2b528c8ef800c8c13
 
 ###
 
