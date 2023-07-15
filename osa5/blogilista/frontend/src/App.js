@@ -49,7 +49,6 @@ const App = () => {
 						setErrorMessage(null)
 					}, 5000)
 				})
-			//refreshWindow()
 		}
 		else
 		{
@@ -146,6 +145,7 @@ const App = () => {
 			<div>
 				username
 				<input
+					id='username'
 					value={username}
 					onChange={({ target }) => setUsername(target.value)}
 				/>
@@ -153,12 +153,13 @@ const App = () => {
 			<div>
 				password
 				<input
+					id='password'
 					type="password"
 					value={password}
 					onChange={({ target }) => setPassword(target.value)}
 				/>
 			</div>
-			<button type="submit">login</button>
+			<button id='login-button' type="submit">login</button>
 		</form>
 	)
 
@@ -168,7 +169,7 @@ const App = () => {
 	}
 
 	function refreshWindow() {
-		//window.location.reload()
+		window.location.reload()
 	}
 
 	const addBlogForm = () => {
@@ -186,7 +187,7 @@ const App = () => {
 			{!user && loginForm()}
 			{user &&
 				<div>
-					<p>{user.name} logged in <button onClick={logOut}>logout</button> </p>
+					<p>{user.name} logged in <button onClick={function(){logOut(); refreshWindow()}}>logout</button> </p>
 					{addBlogForm()}
 					<h2>Blogs</h2>
 					<ul>
@@ -201,5 +202,6 @@ const App = () => {
 		</div>
 	)
 }
+
 
 export default App
