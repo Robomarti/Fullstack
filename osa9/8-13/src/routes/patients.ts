@@ -7,8 +7,9 @@ patientRouter.get('/', (_req, res) => {
   res.send(patientService.getPatients());
 });
 
-patientRouter.post('/', (_req, res) => {
-  res.send('Saving a diagnose!');
+patientRouter.post('/', (req, res) => {
+  const addedPatient = patientService.addPatient(req.body);
+  res.json(addedPatient);
 });
 
 export default patientRouter;
