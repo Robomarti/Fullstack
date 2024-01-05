@@ -12,13 +12,13 @@ const App = () => {
     })
   }, [])
 
-  const noteCreation = (event: React.SyntheticEvent) => {
+  const diaryCreation = (event: React.SyntheticEvent) => {
     event.preventDefault()
     const diaryToAdd = {
       id: diaries.length + 1,
       date: "",
-      weather: 'sunny',
-      visibility: 'great',
+      weather: Weather['Sunny'],
+      visibility: Visibility['Great'],
       comment: ""
     }
     setDiaries(diaries.concat(diaryToAdd));
@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div>
-      <form onSubmit={noteCreation}>
+      <form onSubmit={diaryCreation}>
         <input
           value={newDiary}
           onChange={(event) => setNewDiary(event.target.value)} 
@@ -36,7 +36,7 @@ const App = () => {
       </form>
       <ul>
         {diaries.map(diary =>
-          <li key={diary.id}>{diary.comment}</li>
+          <li key={diary.id}><h3>{diary.date}</h3>{diary.weather}, {diary.visibility}</li>
         )}
       </ul>
     </div>
