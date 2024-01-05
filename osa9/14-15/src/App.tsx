@@ -26,22 +26,22 @@ interface CoursePartBasicBackground extends CoursePartBase {
 }
 
 interface CoursePartBasic extends CoursePartBasicBackground {
-  kind: "basic"
+  kind: "basic";
 }
 
 interface CoursePartGroup extends CoursePartBase {
   groupProjectCount: number;
-  kind: "group"
+  kind: "group";
 }
 
 interface CoursePartBackground extends CoursePartBasicBackground {
   backgroundMaterial: string;
-  kind: "background"
+  kind: "background";
 }
 
 interface CoursePartSpecial extends CoursePartBasicBackground {
   requirements: string[];
-  kind: "special"
+  kind: "special";
 }
 
 type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground | CoursePartSpecial;
