@@ -7,6 +7,19 @@ import HealthRatingBar from "../HealthRatingBar";
 import patientService from "../../services/patients";
 import { Patient, Gender, Entry } from "../../types";
 
+const EntryDetails: React.FC<{ entry: Entry}> = ({ entry }) => {
+  switch (entry.type){
+    case "Hospital":
+      return <div>{entry.discharge.criteria}, {entry.discharge.date}</div>;
+    case "OccupationalHealthcare":
+      return <div>{entry.employerName}<br/>{entry.sickLeave?.startDate}-{entry.sickLeave?.endDate}</div>;
+    case "HealthCheck":
+      return <div>Health rating: {entry.healthCheckRating}</div>;
+    default:
+      throw new Error('entry is wrong type');
+  }
+};
+
 const SinglePatientPage: React.FC = () => {
   const { patient_id } = useParams();
   const [patient, setPatient] = React.useState<Patient>({id:"",name:"",dateOfBirth:"",ssn:"",gender:Gender.Male,occupation:"",entries:[]});
@@ -16,7 +29,6 @@ const SinglePatientPage: React.FC = () => {
       try{
         const patient = await patientService.getOne(patient_id!);
         setPatient(patient);
-        console.log(patient);
       }catch (e) {
         console.error(e);
       }};
@@ -56,6 +68,7 @@ const SinglePatientPage: React.FC = () => {
               <TableCell>{entry.description}</TableCell>
               <TableCell>{entry.diagnosisCodes}</TableCell>
               <TableCell>{entry.specialist}</TableCell>
+              <EntryDetails entry={entry} ></EntryDetails>
             </TableRow>
           ))}
     </div>
