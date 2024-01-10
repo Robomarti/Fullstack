@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import HealthRatingBar from "../HealthRatingBar";
 
 import patientService from "../../services/patients";
-import { Patient, Gender } from "../../types";
+import { Patient, Gender, Entry } from "../../types";
 
 const SinglePatientPage: React.FC = () => {
   const { patient_id } = useParams();
@@ -16,6 +16,7 @@ const SinglePatientPage: React.FC = () => {
       try{
         const patient = await patientService.getOne(patient_id!);
         setPatient(patient);
+        console.log(patient);
       }catch (e) {
         console.error(e);
       }};
@@ -48,6 +49,15 @@ const SinglePatientPage: React.FC = () => {
             <TableCell><HealthRatingBar showText={false} rating={1} /></TableCell>
         </TableBody>
       </Table>
+    {Object.values(patient.entries).map((entry: Entry) => (
+            <TableRow key={entry.id}>
+              <TableCell>{entry.type}</TableCell>
+              <TableCell>{entry.date}</TableCell>
+              <TableCell>{entry.description}</TableCell>
+              <TableCell>{entry.diagnosisCodes}</TableCell>
+              <TableCell>{entry.specialist}</TableCell>
+            </TableRow>
+          ))}
     </div>
   );
 };
